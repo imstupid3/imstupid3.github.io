@@ -3,29 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>automatic</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+    <title>Pastebin Clone</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>tester</h1>
+        <h1>Pastebin Clone</h1>
         <textarea id="code" placeholder="Enter your Lua code here"></textarea>
         <input id="filename" placeholder="Enter filename (e.g., snippet.lua)" />
-        <button onclick="saveFile()">Save</button>
+        <button onclick="generateRawLink()">Generate Raw Link</button>
+        <div id="output" class="output"></div>
     </div>
     <script>
-        function saveFile() {
+        function generateRawLink() {
             const code = document.getElementById('code').value;
             const filename = document.getElementById('filename').value || 'snippet.lua';
 
-            // Create a Blob and a download link
+            // Create a blob with the Lua code
             const blob = new Blob([code], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            a.click();
-            URL.revokeObjectURL(url);
+
+            // Display the raw link for the user to copy
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <p>Your raw link (temporary):</p>
+                <a href="${url}" target="_blank">${url}</a>
+                <p><strong>Note:</strong> To make this permanent, save it as a file in your GitHub Pages repository.</p>
+            `;
         }
     </script>
 </body>
