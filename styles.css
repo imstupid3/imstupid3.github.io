@@ -16,7 +16,7 @@ body {
     padding: 20px;
     border-radius: 12px; /* UI Corner Effect */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
-    width: 400px;
+    width: 300px;
     text-align: center;
 }
 
