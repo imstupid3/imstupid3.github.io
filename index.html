@@ -19,16 +19,16 @@
             const code = document.getElementById('code').value;
             const filename = document.getElementById('filename').value || 'snippet.lua';
 
-            // Create a blob with the Lua code
+            // Create a Blob with the Lua code
             const blob = new Blob([code], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
+            const url = URL.createObjectURL(blob);  // This creates a temporary link
 
-            // Display the raw link for the user to copy
+            // Create a link with the raw content
             const output = document.getElementById('output');
             output.innerHTML = `
-                <p>Your raw link (temporary):</p>
-                <a href="${url}" target="_blank">${url}</a>
-                <p><strong>Note:</strong> To make this permanent, save it as a file in your GitHub Pages repository.</p>
+                <p>Your temporary raw link (use with loadstring):</p>
+                <a href="${url}" target="_blank" download="${filename}">${url}</a>
+                <p><strong>Note:</strong> This is a temporary link. For permanent use, upload it to your GitHub repository or another file hosting service.</p>
             `;
         }
     </script>
