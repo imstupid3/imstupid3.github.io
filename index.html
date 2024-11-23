@@ -19,16 +19,18 @@
             const code = document.getElementById('code').value;
             const filename = document.getElementById('filename').value || 'snippet.lua';
 
-            // Create a Blob with the Lua code
-            const blob = new Blob([code], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);  // This creates a temporary link
+            // Base64 encode the Lua code
+            const base64Code = btoa(unescape(encodeURIComponent(code)));
 
-            // Create a link with the raw content
+            // Generate the raw link (Base64 encoded)
+            const rawLink = `data:text/plain;base64,${base64Code}`;
+
+            // Display the link to the user
             const output = document.getElementById('output');
             output.innerHTML = `
-                <p>Your temporary raw link (use with loadstring):</p>
-                <a href="${url}" target="_blank" download="${filename}">${url}</a>
-                <p><strong>Note:</strong> This is a temporary link. For permanent use, upload it to your GitHub repository or another file hosting service.</p>
+                <p>Your raw link (temporary):</p>
+                <a href="${rawLink}" target="_blank">${rawLink}</a>
+                <p><strong>Note:</strong> This is a temporary link that encodes the Lua code. For permanent links, upload it to your GitHub or another file hosting service.</p>
             `;
         }
     </script>
