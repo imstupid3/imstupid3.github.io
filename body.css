@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+
+    /* Background Image */
+    background-image: url('https://raw.githubusercontent.com/imstupid3/imstupid3.github.io/refs/heads/main/1000058929.png'); /* Change this to your image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps background fixed when scrolling */
+}
